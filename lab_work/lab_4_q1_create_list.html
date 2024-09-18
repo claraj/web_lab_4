@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>List Generator</h1>
+
+
+    <input id="new-list-item-text">
+
+    <button id="add-new-item">Add new list item</button>
+
+    <ul id="list-of-items">
+        <!-- empty, will add elements with JS -->
+         <!-- li elements are contained within ul elements -->
+          <!-- li elements are child elements of ul elements  -->
+           <!-- ul elements are containers for li elements, 
+            ul elements are parents of li elements   -->
+         <!-- <li>Example</li> -->
+    </ul>
+
+    <button id="clear-list">Clear</button>
+
+
+    <script>
+
+        // find the HTML input with ID new-list-item-text and making a variable in 
+        // javascript to represent that HTML element 
+        // we don't have to specfiy that it's a button or an input 
+        // remember # needed to select by ID
+        let newListItemTextInputElement = document.querySelector('#new-list-item-text')
+
+        let addNewItemButtonElement = document.querySelector('#add-new-item')
+
+        let listOfItemsElement = document.querySelector('#list-of-items')
+
+        let clearButton = document.querySelector('#clear-list')
+
+        let numberOfItems = 0
+
+
+        // add comments
+        clearButton.addEventListener('click', function() {
+            // What HTML is inside the ul element? if it's an empty string then all 
+            // the HTML will be replaced with empty string 
+            listOfItemsElement.innerHTML = ''
+
+            // what should numberOfItems be now once you've cleared the list? 
+        })
+
+
+        // Provide a function definition, code that runs when the click happens 
+        addNewItemButtonElement.addEventListener('click', function() {
+
+            // clearButton.addEventListener   // wrong - do you know why?
+
+            // I like to add an alert to check if the event listener code
+            // is running when I expect it to 
+            // alert('hello!')
+
+            // figure out what the user entered, save it in a variable
+            // this will store whatever the current value of the input is. 
+            let newInputText = newListItemTextInputElement.value
+
+
+            // do valiation first
+            if (newInputText.length == 0) {
+                return   // stop processing this function
+            }
+
+            if (newInputText.length > 50) {
+                // what to do here?
+
+                return
+            }
+
+
+            // todo - check number of items - is it more than 10? if so, return 
+
+            // if you pass the validation checks, proceed to adding the new item to the list
+            console.log(newInputText)
+
+            // make new li item, set the text to the text the user entered
+            // specify the type of element, use a valid HTML tag
+            let newListItemElement = document.createElement('li')
+            
+            // configure the new element, set the text. The text is stored
+            // in the variable we created by reading the value of the input element 
+            newListItemElement.innerHTML = newInputText
+
+            // add the li item to the ul element. The li should be contained within
+            // the ul element 
+            listOfItemsElement.appendChild(newListItemElement)
+
+            // clear the input by setting the value to an empty string
+            newListItemTextInputElement.value = ''
+
+        // wrong 
+        // clearButton.addEventListener('click', function() {
+        //     // clear list 
+        // })
+             
+        })     // end of the add button event listener code 
+
+
+        // this is ok 
+        // clearButton.addEventListener('click', function() {
+        //     // clear list 
+        // })
+
+
+
+
+
+    </script>
+
+
+    
+</body>
+</html>
